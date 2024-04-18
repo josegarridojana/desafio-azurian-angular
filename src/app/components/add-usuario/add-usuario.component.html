@@ -1,0 +1,42 @@
+<div>
+  <div class="submit-form">
+    @if (!submitted) {
+    <div class="form-group">
+      <label for="name">Usuario</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        [(ngModel)]="usuario.name"
+        name="name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        class="form-control"
+        id="password"
+        required
+        [(ngModel)]="usuario.password"
+        name="password"
+      />
+    </div>
+<div class="form-group">
+      <label for="email">Email</label>
+      <input
+        class="form-control"
+        id="email"
+        required
+        [(ngModel)]="usuario.email"
+        name="email"
+      />
+    </div>
+    <button (click)="saveUsuario()" class="btn btn-success">Enviar</button>
+    } @else {
+    <h4>Usuario fue enviado exitosamente!</h4>
+    <button class="btn btn-success" (click)="newUsuario()">Agregar</button>
+    }
+  </div>
+</div>

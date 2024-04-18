@@ -1,0 +1,87 @@
+@if (viewMode){
+  @if (currentUsuario.id){
+  <h4>Usuario</h4>
+  <div>
+    <label><strong>Nombre:</strong></label> {{ currentUsuario.name }}
+  </div>
+  <div>
+    <label><strong>Password:</strong></label>
+    {{ currentUsuario.password }}
+  </div>
+  <div>
+    <label><strong>Estado:</strong></label>
+    {{ currentUsuario.active ? "Activo" : "No Activo" }}
+  </div>
+
+  <a class="badge badge-warning" routerLink="/usuarios/{{ currentUsuario.id }}">
+    Editar
+  </a>
+  } @else {<p>Por favor haga clic en un Usuario...</p>}
+} @else {
+  @if (currentUsuario.id) {
+  <div class="edit-form">
+    <h4>Usuario</h4>
+    <form>
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentUsuario.name"
+          name="name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="text"
+          class="form-control"
+          id="password"
+          [(ngModel)]="currentUsuario.password"
+          name="password"
+        />
+      </div>
+	  
+	   <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          [(ngModel)]="currentUsuario.email"
+          name="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label><strong>Estado:</strong></label>
+        {{ currentUsuario.active ? "Activo" : "No activo" }}
+      </div>
+    </form>
+
+    @if (currentUsuario.active) {
+    <button class="badge badge-primary mr-2"
+      (click)="updatePublished(false)" >
+      No Activar
+    </button>
+    } @else {
+    <button class="badge badge-primary mr-2" (click)="updatePublished(true)">
+      Activar
+    </button>
+    }
+
+    <button class="badge badge-danger mr-2" (click)="deleteUsuario()">
+      Eliminar
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateUsuario()">
+      Actualizar
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  } @else {<p>No se puede acceder a esta Usuario...</p>}
+}
