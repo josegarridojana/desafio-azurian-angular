@@ -16,9 +16,6 @@ export class UsuarioService {
     return this.http.get<any>(baseUrl, { params });
   }
   
-   getAll2(): Observable<any> {
-    return this.http.get<any>(baseUrl);
-  }
 
   get(id: any): Observable<Usuario> {
     return this.http.get<Usuario>(`${baseUrl}/${id}`);

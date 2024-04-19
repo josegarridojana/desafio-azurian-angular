@@ -1,42 +1,62 @@
-<div>
-  <div class="submit-form">
-    @if (!submitted) {
-    <div class="form-group">
-      <label for="name">Usuario</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
-        required
-        [(ngModel)]="usuario.name"
-        name="name"
-      />
-    </div>
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Usuario Form</h1>
+    <form (ngSubmit)="saveUsuario()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="name">DD</label>
+        <input type="text" class="form-control" id="name"
+               required
+               [(ngModel)]="usuario.name" name="name"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+	  <div class="form-group">
+        <label for="password">password</label>
+        <input type="password" class="form-control" id="password"
+               required
+               [(ngModel)]="usuario.password" name="password"
+               #password="ngModel">
+        <div [hidden]="password.valid || password.pristine"
+             class="alert alert-danger">
+          password is required
+        </div>
+      </div>
+	   <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" class="form-control" id="email"
+               required
+               [(ngModel)]="usuario.email" name="email"
+               #email="ngModel">
+        <div [hidden]="email.valid || email.pristine"
+             class="alert alert-danger">
+          email is required
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        class="form-control"
-        id="password"
-        required
-        [(ngModel)]="usuario.password"
-        name="password"
-      />
+      
+
+      <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Enviar</button>
+      <button type="button" class="btn btn-default" (click)="newUsuario(); userForm.reset()">Agregar</button>
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>Usuario fue enviado exitosamente!</h2>
+    <div class="row">
+      <div class="col-xs-3">Name:</div>
+	  <div class="col-xs-9">{{ usuario.name }}</div>
     </div>
-<div class="form-group">
-      <label for="email">Email</label>
-      <input
-        class="form-control"
-        id="email"
-        required
-        [(ngModel)]="usuario.email"
-        name="email"
-      />
+    <div class="row">	
+      <div class="col-xs-3">Email:</div>
+	    <div class="col-xs-9">{{ usuario.email }}</div>
     </div>
-    <button (click)="saveUsuario()" class="btn btn-success">Enviar</button>
-    } @else {
-    <h4>Usuario fue enviado exitosamente!</h4>
-    <button class="btn btn-success" (click)="newUsuario()">Agregar</button>
-    }
+    
+    <br>
+    <button type="button" class="btn btn-primary" (click)="submitted=false">Agregar</button>
   </div>
 </div>
+
+
