@@ -7,6 +7,10 @@ Desafio Angular 17
 Para obtener instrucciones, visite:
 > [Desafio Angular](https://github.com/josegarridojana/desafio-azurian-angular)
 
+Config Karma
+
+https://angular.io/guide/testing
+
 Instrucciones de Uso:
 
 ## Install modules
@@ -22,6 +26,18 @@ Run `ng build` para construir el proyecto. Los artefactos de compilación se alm
 ## Running unit tests
 
 Run `ng test` para ejecutar las pruebas unitarias a través de [Karma] (https://karma-runner.github.io).
+
+## Running unit tests only component
+
+Run `ng test --include src/app/services/usuario.service.ts` para ejecutar pruebas unitarias por componente a través de [Karma] (https://karma-runner.github.io).
+
+## Running coverage
+
+Run `ng test --no-watch --code-coverage` para ejecutar coverage a través de [Angular] (https://angular.io/guide/testing-code-coverage).
+
+## Running coverage only component
+
+Run `ng test --include src/app/services/usuario.service.ts --no-watch --code-coverage` para ejecutar coverage por componente a través de [Angular] (https://angular.io/guide/testing-code-coverage).
 
 ## Running end-to-end tests
 

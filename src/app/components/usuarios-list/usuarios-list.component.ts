@@ -39,7 +39,7 @@ export class UsuariosListComponent implements OnInit {
     if (pageSize) {
       params[`size`] = pageSize;
     }
-
+	console.log('params:'+ params);
     return params;
   }
 
@@ -95,6 +95,13 @@ export class UsuariosListComponent implements OnInit {
         }
       });
 
+  }
+  
+  obtenerEstadosTransaccion(estado: string) {
+    estado = estado.replace('Participa', 'Acumula');
+    estado = estado.replace('Puede', 'Por');
+    estado = estado.replace('Participar', 'Acumular');
+    return estado;
   }
 
   searchName(): void {
